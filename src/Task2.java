@@ -129,6 +129,9 @@ public class Task2 {
             try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
                 String line = br.readLine();
                 int size = Integer.parseInt(line);
+                if (size < 2 && size > 15) {
+                    throw new CustomException("Matrix size must be from 2 to 15!");
+                }
 
                 A = new int[size][size];
                 B = new int[size][size];
@@ -168,6 +171,12 @@ public class Task2 {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
+        }
+    }
+
+    private static class CustomException extends ArithmeticException {
+        public CustomException(String msg) {
+            super(msg);
         }
     }
 
