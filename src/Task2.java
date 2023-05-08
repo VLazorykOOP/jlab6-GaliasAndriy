@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -85,6 +84,13 @@ public class Task2 {
             System.out.print(X[i] + " ");
         return X;
     }
+    public static String vectorToString(int[] vector) {
+        StringBuilder sb = new StringBuilder();
+        for (int i : vector) {
+            sb.append(i + " ");
+        }
+        return sb.toString();
+    }
 
     private void printMatrix(int[][] a, int[][] b, int size) {
         DefaultTableModel model1 = new DefaultTableModel();
@@ -155,7 +161,8 @@ public class Task2 {
                 }
 
                 printMatrix(A, B, size);
-                BuildVectorX(A, B, size);
+                String v = vectorToString(BuildVectorX(A, B, size));
+                boolVector.setText(v);
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "File: " + filePath + " not found!", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (IOException ex) {
