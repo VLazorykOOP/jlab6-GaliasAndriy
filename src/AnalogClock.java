@@ -9,6 +9,7 @@ public class AnalogClock extends JFrame implements ActionListener {
     //private JLabel clockLabel;
     private JButton hourUpBtn, hourDownBtn, minuteUpBtn, minuteDownBtn; //btns
     private JButton secondUpBtn, secondDownBtn;
+    public String fileName = "D:/Java_labs/jlab6-GaliasAndriy/src/time.txt";
     private int hour, minute, second;
     private CirclePanel circlePanel;
     public class InvalidHourValueException extends Exception {
@@ -21,7 +22,6 @@ public class AnalogClock extends JFrame implements ActionListener {
             super(message);
         }
     }
-
     public AnalogClock() throws InvalidHourValueException, InvalidValueException {
         hour = 0;
         minute = 0;
@@ -31,7 +31,7 @@ public class AnalogClock extends JFrame implements ActionListener {
         //clockLabel.setFont(new Font("Monospace", Font.BOLD, 32));
 
         try {
-            File file = new File("D:/Java_labs/jlab6-GaliasAndriy/src/time.txt");
+            File file = new File(fileName);
             Scanner scanner = new Scanner(file);
             try {
                 hour = scanner.nextInt();
